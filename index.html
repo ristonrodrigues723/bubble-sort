@@ -4,73 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bubble Sort Visualizer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-        #container {
-            display: flex;
-            height: 300px;
-            align-items: flex-end;
-            margin-bottom: 20px;
-        }
-        .bar {
-            width: 30px;
-            margin: 0 2px;
-            background-color: #3498db;
-            transition: height 0.2s ease-in-out;
-        }
-        input, button {
-            margin: 5px;
-            padding: 5px 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="b.css">
 </head>
 <body>
-    <h1>Bubble Sort Visualizer</h1>
-    <div id="container"></div>
-    <div>
-        <input type="number" id="numberInput" placeholder="Enter a number">
-        <button onclick="addNumber()">Add Number</button>
-        <button onclick="startSort()">Sort</button>
-        <button onclick="clearNumbers()">Clear</button>
+    <div class="container">
+        <h1>Bubble Sort Visualizer</h1>
+        <div id="bar-container"></div>
+        <div id="number-container"></div>
+        <div class="controls">
+            <input type="number" id="numberInput" placeholder="Enter a number">
+            <button id="addBtn">Add Number</button>
+            <button id="sortBtn">Sort</button>
+            <button id="clearBtn">Clear</button>
+        </div>
     </div>
-    <script>
-        let numbers = [];
-        const container = document.getElementById('container');
-
-        function addNumber() {
-            const input = document.getElementById('numberInput');
-            const num = parseInt(input.value);
-            if (!isNaN(num)) {
-                numbers.push(num);
-                updateVisualization();
-                input.value = '';
-            }
-        }
-
-        function updateVisualization() {
-            container.innerHTML = '';
-            const maxHeight = 280;
-            const maxNum = Math.max(...numbers, 1);
-            numbers.forEach(num => {
-                const bar = document.createElement('div');
-                bar.className = 'bar';
-                bar.style.height = `${(num / maxNum) * maxHeight}px`;
-                container.appendChild(bar);
-            });
-        }
-
-      
-
-        function clearNumbers() {
-            numbers = [];
-            updateVisualization();
-        }
-    </script>
+    <script src="b.js"></script>
 </body>
 </html>
