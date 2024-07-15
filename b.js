@@ -5,6 +5,7 @@ const numberInput = document.getElementById('numberInput');
 const addBtn = document.getElementById('addBtn');
 const sortBtn = document.getElementById('sortBtn');
 const clearBtn = document.getElementById('clearBtn');
+const messageBox = document.getElementById('massage');
 
 addBtn.addEventListener('click', addNumber);
 sortBtn.addEventListener('click', startSort);
@@ -45,6 +46,9 @@ async function startSort() {
     const bars = document.getElementsByClassName('bar');
     const numberDivs = document.getElementsByClassName('number');
 
+    // Display numbers before sorting
+    messageBox.innerHTML = `<p>Numbers before sorting: ${numbers.join(', ')}</p>`;
+
     for (let i = 0; i < numbers.length; i++) {
         for (let j = 0; j < numbers.length - i - 1; j++) {
             bars[j].style.backgroundColor = '#e74c3c';
@@ -64,6 +68,9 @@ async function startSort() {
         numberDivs[numbers.length - i - 1].style.color = '#2ecc71';
     }
 
+    // Display numbers after sorting
+    messageBox.innerHTML += `<p>Numbers after sorting: ${numbers.join(', ')}</p>`;
+
     sortBtn.disabled = false;
     addBtn.disabled = false;
     clearBtn.disabled = false;
@@ -72,4 +79,5 @@ async function startSort() {
 function clearNumbers() {
     numbers = [];
     updateVisualization();
+    messageBox.innerHTML = '';
 }
